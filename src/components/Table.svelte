@@ -119,10 +119,10 @@
           {#each $ingredients as ingredient, index}
           <tr>
             <th>{index + 1}</th>
-            <td><input type="text" placeholder="Type here" class="input-ghost" bind:value={ingredient.name} /></td>
-            <td><input type="text" placeholder="Type here" class="input-ghost" bind:value={ingredient.cost} /></td>
-            <td><input type="text" placeholder="Type here" class="input-ghost" bind:value={ingredient.volumePack} /></td>
-            <td><input type="text" placeholder="Type here" class="input-ghost" bind:value={ingredient.volumeRecipe} /></td>
+            <td><input type="text" placeholder="Type here" class="input-ghost" on:input={updateLocalStorage} bind:value={ingredient.name} /></td>
+            <td><input type="number" placeholder="Type here" class="input-ghost" on:input={updateLocalStorage} bind:value={ingredient.cost} /></td>
+            <td><input type="number" placeholder="Type here" class="input-ghost" on:input={updateLocalStorage} bind:value={ingredient.volumePack} /></td>
+            <td><input type="number" placeholder="Type here" class="input-ghost" on:input={updateLocalStorage} bind:value={ingredient.volumeRecipe} /></td>
             <td>
               <button on:click={() => removeIngredient(index)}>❌</button>
             </td>
