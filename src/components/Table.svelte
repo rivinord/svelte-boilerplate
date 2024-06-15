@@ -88,64 +88,65 @@
 </script>
 
 <style>
-  .table td, .table th {
-    padding: 0.5rem;
-    text-align: left;
-  }
-
-  .table input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0.5rem;
-  }
-</style>
-
-<div class="overflow-x-auto">
-    <table class="table">
-      <!-- head -->
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Название инегредиента</th>
-          <th>Цена упаковки</th>
-          <th>Объем в упаковке</th>
-          <th>Объем в рецепте</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each $ingredients as ingredient, index}
-        <tr>
-          <th>{index + 1}</th>
-          <td><input type="text" placeholder="Type here" class="input-ghost" bind:value={ingredient.name} /></td>
-          <td><input type="text" placeholder="Type here" class="input-ghost" bind:value={ingredient.cost} /></td>
-          <td><input type="text" placeholder="Type here" class="input-ghost" bind:value={ingredient.volumePack} /></td>
-          <td><input type="text" placeholder="Type here" class="input-ghost" bind:value={ingredient.volumeRecipe} /></td>
-          <td>
-            <button on:click={() => removeIngredient(index)}>❌</button>
-          </td>
-        </tr>
-        {/each}
-      </tbody>
-    </table>
-</div>
-
-
-
-<div>
-    <button class="btn" on:click={addIngredient}>Add Ingredient</button>
-</div>
-
-<div>
-    <button class="btn" on:click={clearIngredients}>Clear All</button>
-</div>
-
-<div>
-    <p style="display: flex; align-items: center;">Себестоимость:
-        <input class="input input-bordered w-full max-w-xs"
-            disabled
-            value="{$ingredients.length > 0
-            ? calculateTotalCost($ingredients).toFixed(2)
-            : '0.00'} руб"/>
-    </p>
-</div>
+    .table td, .table th {
+      padding: 0.5rem;
+      text-align: left;
+      white-space: normal; /* Позволяет тексту переноситься на новые строки */
+      word-wrap: break-word; /* Переносит слова при необходимости */
+    }
+  
+    .table input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.5rem;
+    }
+  </style>
+  
+  <div class="overflow-x-auto">
+      <table class="table">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Название ингредиента</th>
+            <th>Цена упаковки</th>
+            <th>Объем в&nbsp;упаковке</th>
+            <th>Объем в&nbsp;рецепте</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {#each $ingredients as ingredient, index}
+          <tr>
+            <th>{index + 1}</th>
+            <td><input type="text" placeholder="Type here" class="input-ghost" bind:value={ingredient.name} /></td>
+            <td><input type="text" placeholder="Type here" class="input-ghost" bind:value={ingredient.cost} /></td>
+            <td><input type="text" placeholder="Type here" class="input-ghost" bind:value={ingredient.volumePack} /></td>
+            <td><input type="text" placeholder="Type here" class="input-ghost" bind:value={ingredient.volumeRecipe} /></td>
+            <td>
+              <button on:click={() => removeIngredient(index)}>❌</button>
+            </td>
+          </tr>
+          {/each}
+        </tbody>
+      </table>
+  </div>
+  
+  <div>
+      <button class="btn" on:click={addIngredient}>Add Ingredient</button>
+  </div>
+  
+  <div>
+      <button class="btn" on:click={clearIngredients}>Clear All</button>
+  </div>
+  
+  <div>
+      <p style="display: flex; align-items: center;">Себестоимость:
+          <input class="input input-bordered w-full max-w-xs"
+              disabled
+              value="{$ingredients.length > 0
+              ? calculateTotalCost($ingredients).toFixed(2)
+              : '0.00'} руб"/>
+      </p>
+  </div>
+  
