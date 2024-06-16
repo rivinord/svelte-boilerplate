@@ -1,15 +1,9 @@
 <script>
     import Table from '../components/Table.svelte';
-    import Table2 from '../components/Table2.svelte';
-    import Cost from '../components/Cost.svelte';
 </script>
 
 <Table />
 
-<!-- <Cost />
-
-
-<Table2 /> -->
 
 
 <!-- <h1>Welcome to SvelteKit</h1>
