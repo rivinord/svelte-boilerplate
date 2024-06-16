@@ -104,10 +104,10 @@ onMount(() => {
     <thead>
       <tr>
         <th>#</th>
-        <th>Название ингредиента</th>
-        <th>Стоимость упаковки <span class="font-normal italic">(₽)</span></th>
-        <th>Объем в&nbsp;упаковке <span class="font-normal text-nowrap italic">(мл/г/шт)</span></th>
-        <th>Объем в&nbsp;рецепте <span class="font-normal text-nowrap italic">(мл/г/шт)</span></th>
+        <th>название ингредиента</th>
+        <th>стоимость упаковки <span class="font-normal italic">(₽)</span></th>
+        <th>объем в&nbsp;упаковке <span class="font-normal text-nowrap italic">(мл/г/шт)</span></th>
+        <th>объем в&nbsp;рецепте <span class="font-normal text-nowrap italic">(мл/г/шт)</span></th>
         <th></th>
       </tr>
     </thead>
@@ -134,9 +134,9 @@ onMount(() => {
 
 <!-- buttons -->
 <div class="flex flex-col items-center space-y-4 p-4">
-  <button class="btn" on:click={addIngredient}>Add Ingredient</button>
+  <button class="btn" on:click={addIngredient}>добавить ингредиент</button>
 
-  <button class="btn" on:click={clearIngredients}>Clear All</button>
+  <button class="btn" on:click={clearIngredients}>очистить всё</button>
 
   <p class="flex items-center space-x-2">
     Себестоимость:
@@ -144,6 +144,6 @@ onMount(() => {
       disabled
       value="{$ingredients.length > 0
       ? calculateTotalCost($ingredients).toFixed(2)
-      : '0.00'} руб"/>
+      : '0.00'} ₽"/>
   </p>
 </div>
