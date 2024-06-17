@@ -73,7 +73,7 @@ onMount(() => {
       const volumeRecipeNum = parseFloat(volumeRecipe);
 
       if (!isNaN(costNum) && !isNaN(volumePackNum) && !isNaN(volumeRecipeNum)) {
-        const ingredientCost = (costNum * volumeRecipeNum) / volumePackNum;
+        const ingredientCost = costNum * (volumeRecipeNum / volumePackNum);
         return acc + ingredientCost;
       }
       return acc;
@@ -118,8 +118,8 @@ onMount(() => {
       <tr>
         <th class="text-xs bg-base-200 text-neutral">{index + 1}</th>
         <td><input type="text" class="input input-bordered border-dashed" on:input={updateLocalStorage} bind:value={ingredient.name} /></td>
-        <td><input type="number" class="input input-bordered border-dashed" on:input={updateLocalStorage} bind:value={ingredient.volumePack} /></td>
         <td><input type="number" class="input input-bordered border-dashed" on:input={updateLocalStorage} bind:value={ingredient.cost} /></td>
+        <td><input type="number" class="input input-bordered border-dashed" on:input={updateLocalStorage} bind:value={ingredient.volumePack} /></td>
         <td><input type="number" class="input input-bordered border-dashed" on:input={updateLocalStorage} bind:value={ingredient.volumeRecipe} /></td>
         <td>
           <button on:click={() => removeIngredient(index)}>❌</button>
